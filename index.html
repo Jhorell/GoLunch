@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go Lunch</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- HEADER CON IMAGEN -->
+  <header class="header-img">
+    <div class="header-overlay">
+      <h1>Go Lunch</h1>
+      <p>Encuentra dónde comer sin alejarte del campus</p>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="nav-center">
+    <a href="#inicio">Inicio</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+      <div class="hero-overlay">
+        <h2>Comer bien cerca de la universidad</h2>
+        <p>
+          Go Lunch te muestra lugares cercanos, económicos y accesibles
+          para estudiantes universitarios.
+        </p>
+      </div>
+    </section>
+
+    <!-- BUSCADOR -->
+    <section id="buscar">
+      <label for="select-uni">Selecciona tu Universidad:</label>
+      <select id="select-uni" onchange="mostrarResultados()">
+        <option value="fidelitas" selected>Universidad Fidélitas</option>
+        <option value="ucr">Universidad de Costa Rica</option>
+      </select>
+      <button onclick="mostrarResultados()">Buscar</button>
+    </section>
+
+    <!-- MAPA PRINCIPAL -->
+<section id="mapa-cercania">
+  <h3>Ubicación del campus</h3>
+
+  <p id="mapa-descripcion">
+    El mapa está centrado en la Universidad Fidélitas.
+  </p>
+
+  <div class="mapa-contenedor">
+    <iframe
+      id="mapa-iframe"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<script>
+function mostrarResultados() {
+  const uni = document.getElementById("select-uni").value;
+  const mapaIframe = document.getElementById("mapa-iframe");
+  const mapaDescripcion = document.getElementById("mapa-descripcion");
+
+  document.getElementById("resultados-fidelitas").style.display = "none";
+  document.getElementById("resultados-ucr").style.display = "none";
+
+  if (uni === "fidelitas") {
+    document.getElementById("resultados-fidelitas").style.display = "block";
+    mapaIframe.src = FIDELITAS_MAPA_URL;
+    mapaDescripcion.textContent =
+      "El mapa está centrado en la Universidad Fidélitas. Puedes moverte para ver restaurantes cercanos.";
+
+  } else if (uni === "ucr") {
+    document.getElementById("resultados-ucr").style.display = "block";
+    mapaIframe.src = UCR_MAPA_URL;
+    mapaDescripcion.textContent =
+      "El mapa está centrado en la Universidad de Costa Rica (Rodrigo Facio).";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", mostrarResultados);
+</script>
+
+    <!-- RESULTADOS FIDELITAS -->
+    <div id="resultados-fidelitas">
+
+      <h3>Restaurantes cerca de Universidad Fidélitas</h3>
+
+      <div class="restaurant-card">
+        <img src="images/soda-moyita.jpeg" alt="Soda Moyita">
+        <h4>Soda Moyita</h4>
+        <a href="https://www.google.com/maps?sca_esv=f99d34a608ada35f&output=search&q=Soda+Moyita+San+Pedro" target="_blank">
+          Ver en Google Maps
+        </a>
+      </div>
+
+      <div class="restaurant-card">
+        <img src="images/candil.jpeg" alt="El Candil">
+        <h4>El Candil</h4>
+        <a href="https://www.google.com/maps?sca_esv=f99d34a608ada35f&output=search&q=El+Candil" target="_blank">
+          Ver en Google Maps
+        </a>
+      </div>
+
+      <div class="restaurant-card">
+        <img src="images/gata.jpeg" alt="La Gata Gastronómica">
+        <h4>La Gata Gastronómica</h4>
+        <a href="https://www.google.com/maps/place/La+Gata+Gastron%C3%B3mica/" target="_blank">
+          Ver en Google Maps
+        </a>
+      </div>
+
+    </div>
+
+    <!-- RESULTADOS UCR -->
+    <div id="resultados-ucr" style="display:none;">
+
+      <h3>Restaurantes cerca de la UCR</h3>
+
+      <div class="restaurant-card">
+        <img src="images/comedor-ucr.jpeg" alt="Comedor UCR">
+        <h4>Las Delicias del Bosque</h4>
+        <a href="https://www.google.com/maps?output=search&q=Las+Delicias+del+Bosque+(Comedor+UCR)" target="_blank">
+          Ver en Google Maps
+        </a>
+      </div>
+
+      <div class="restaurant-card">
+        <img src="images/chante.jpeg" alt="El Chante Vegano">
+        <h4>El Chante Vegano</h4>
+        <a href="https://www.google.com/maps?output=search&q=El+Chante+Vegano" target="_blank">
+          Ver en Google Maps
+        </a>
+      </div>
+
+      <div class="restaurant-card">
+        <img src="images/pomodoro.jpeg" alt="Pizza Il Pomodoro">
+        <h4>Pizza Il Pomodoro</h4>
+        <a href="https://www.google.com/maps?output=search&q=Pizza+Il+Pomodoro" target="_blank">
+          Ver en Google Maps
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 Go Lunch – Proyecto académico
+  </footer>
+
+ <script>
+    // 🚨🚨 PASO 3: REEMPLAZA ESTAS URLs DE EJEMPLO CON LAS URLs REALES DE GOOGLE MAPS 🚨🚨
+
+    // 1. URL real del iframe para el campus Fidélitas
+    const FIDELITAS_MAPA_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15714.453966567156!2d-84.0416972583818!3d9.93409895045618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3c88e993883%3A0x446e91f11a8c886!2sUniversidad%20Fid%C3%A9litas!5e0!3m2!1ses-419!2scr!4v1704381232014!5m2!1ses-419!2scr";
+
+    // 2. URL real del iframe para el campus UCR (Rodrigo Facio)
+    const UCR_MAPA_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.835105267566!2d-84.0531518!3d9.9388536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3be5b0959f9%3A0xc319114b7e889a74!2sUniversidad%20de%20Costa%20Rica%20(UCR)%20Campus%20Rodrigo%20Facio!5e0!3m2!1ses-419!2scr!4v1704381333857!5m2!1ses-419!2scr";
+
+    // Función para cambiar los resultados
+    function mostrarResultados() {
+      const selector = document.getElementById('select-uni');
+      const seleccion = selector.value;
+      const resultadosFidelitas = document.getElementById('resultados-fidelitas');
+      const resultadosUCR = document.getElementById('resultados-ucr');
+      const mapaIframe = document.getElementById('mapa-iframe');
+      const mapaDescripcion = document.getElementById('mapa-descripcion');
+
+      // 1. Mostrar/Ocultar los resultados de los restaurantes
+      if (seleccion === 'fidelitas') {
+        resultadosFidelitas.style.display = 'block';
+        resultadosUCR.style.display = 'none';
+
+        // 2. Actualizar el mapa
+        mapaIframe.src = FIDELITAS_MAPA_URL;
+        mapaDescripcion.textContent = "El mapa está centrado en la Universidad Fidélitas. Puedes moverte en el mapa para ver los restaurantes cercanos.";
+
+      } else if (seleccion === 'ucr') {
+        resultadosFidelitas.style.display = 'none';
+        resultadosUCR.style.display = 'block';
+
+        // 2. Actualizar el mapa
+        mapaIframe.src = UCR_MAPA_URL;
+        mapaDescripcion.textContent = "El mapa está centrado en la Universidad de Costa Rica (Rodrigo Facio).";
+
+      } else {
+        resultadosFidelitas.style.display = 'none';
+        resultadosUCR.style.display = 'none';
+      }
+    }
+
+    // Inicializar la vista al cargar la página (carga Fidélitas por defecto)
+    document.addEventListener('DOMContentLoaded', mostrarResultados);
+  </script>
+
+
+
+</body>
+</html>
