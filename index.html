@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go Lunch - Restaurantes cerca de la Universidad</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+  <header>
+    <h1>Go Lunch</h1>
+    <p>Tu guía de restaurantes cerca de la universidad</p>
+  </header>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#universidades">Buscar Universidad</a>
+    <a href="#favoritos">Mis Favoritos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <div class="container">
+    <h2>Bienvenido a Go Lunch</h2>
+    <p>Encuentra de forma rápida y sencilla los mejores lugares para comer cerca de tu campus. ¡Ahorra tiempo y come
+      delicioso!</p>
+
+    <section id="buscar">
+      <h3>Buscar Restaurantes</h3>
+      <label for="select-uni">Selecciona tu Universidad:</label>
+      <select id="select-uni" onchange="mostrarResultados()">
+        <option value="fidelitas" selected>Universidad Fidélitas (San Pedro)</option>
+        <option value="ucr">Universidad de Costa Rica (Rodrigo Facio)</option>
+        <option value="proximamente" disabled>Otras Universidades (Próximamente)</option>
+      </select>
+      <button onclick="mostrarResultados()">Buscar</button>
+    </section>
+
+    <hr>
+
+    <section id="mapa-cercania">
+      <h3>📍 Mapa del Campus Actual</h3>
+      <p id="mapa-descripcion">El mapa está centrado en la Universidad Fidélitas. Puedes moverte en el mapa para ver los
+        restaurantes cercanos.</p>
+
+      <div class="mapa-contenedor">
+        <iframe id="mapa-iframe" src="" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <p style="text-align: center; font-size: 0.9em; color: #555; margin-top: 10px;">(El punto rojo muestra la
+        ubicación del campus.)</p>
+    </section>
+
+    <hr>
+
+    <div id="resultados-fidelitas" class="resultados-universidad">
+      <section id="restaurantes-cercanos-fidelitas">
+        <h3>Resultados Cercanos a Universidad Fidélitas (San Pedro)</h3>
+
+        <div class="restaurant-card">
+          <h3>🇨🇷 Soda Moyita San Pedro</h3>
+          <p><strong>Tipo:</strong> Comida Típica y Casados. **Horario:** Lunes a Sábado, 7:30–17:30.</p>
+          <p><strong>Dirección:</strong> Contiguo a la Universidad Latina, San José, Montes de Oca.</p>
+          <p><strong>Ideal para:</strong> Almuerzos rápidos y económicos. **Rating:** 4.0</p>
+          <a href="https://web.didiglobal.com/cr/food/san-jose/soda-moyita-san-pedro/5764608429201819120/"
+            target="_blank">Ver en DiDi Food</a>
+        </div>
+
+        <div class="restaurant-card">
+          <h3>☕ El Candil</h3>
+          <p><strong>Tipo:</strong> Cafetería, Bar y Restaurante.</p>
+          <p><strong>Ideal para:</strong> Estudiar con café y comer casados grandes.</p>
+          <p><strong>Precio Estimado:</strong> Muy económico.</p>
+          <a href="https://maps.google.com/maps/contrib/108543015226783544899" target="_blank">Ver Ubicación y
+            Reseñas</a>
+        </div>
+
+        <div class="restaurant-card">
+          <h3>🌮 La Gata Candonga</h3>
+          <p><strong>Tipo:</strong> Plaza Gastronómica (Street Food). **Horario:** Lunes a Domingo, 12:00–22:00.</p>
+          <p><strong>Dirección:</strong> WWJX+MVV, 2, San José, San Pedro.</p>
+          <p><strong>Ideal para:</strong> Variedad de opciones (mexicana, cerveza, etc.) y ambiente nocturno.
+            **Rating:** 4.4</p>
+          <a href="http://lagatacr.com/" target="_blank">Explorar Opciones y Sitio Web</a>
+        </div>
+
+      </section>
+    </div>
+
+    <div id="resultados-ucr" class="resultados-universidad" style="display: none;">
+      <section id="restaurantes-cercanos-ucr">
+        <h3>Resultados Cercanos a UCR (Rodrigo Facio)</h3>
+
+        <div class="restaurant-card">
+          <h3>📚 Las Delicias del Bosque (Comedor UCR)</h3>
+          <p><strong>Tipo:</strong> Comedor Estudiantil (Subsidio UCR).</p>
+          <p><strong>Ideal para:</strong> Opciones muy económicas y almuerzos en el campus.</p>
+          <p><strong>Precio Estimado:</strong> ₡1.000 - ₡3.000.</p>
+          <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15715.123!2d-84.037000!3d9.933872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3c5923c8e43%3A0x7d6f51722e1b12d5!2sUniversidad%20Fid%C3%A9litas!5e0!3m2!1sen!2scr!4v1703080000000!5m2!1sen!2scr"
+            target="_blank">Ver Ubicación en Google Maps</a>
+        </div>
+
+        <div class="restaurant-card">
+          <h3>🥙 El Chante Vegano</h3>
+          <p><strong>Tipo:</strong> Comida Vegana y Vegetariana.</p>
+          <p><strong>Ideal para:</strong> Estudiantes buscando opciones saludables y libres de carne.</p>
+          <p><strong>Precio Estimado:</strong> ₡4.000 - ₡7.000.</p>
+          <a href="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3143.0210212356!2d-84.0350246!3d9.9338724!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3c5923c8e43%3A0x7d6f51722e1b12d5!2sUniversidad%20Fid%C3%A9litas!5e0!3m2!1sen!2scr!4v1678893600000!5m2!1sen!2scr"
+            target="_blank">Ver Menú en Línea</a>
+        </div>
+
+        <div class="restaurant-card">
+          <h3>🍕 Pizza Il Pomodoro</h3>
+          <p><strong>Tipo:</strong> Pizzas artesanales y pastas.</p>
+          <p><strong>Ideal para:</strong> Cenas o almuerzos grupales cerca del Mall San Pedro.</p>
+          <p><strong>Precio Estimado:</strong> ₡5.000 - ₡9.000.</p>
+          <a href="https://maps.google.com/?cid=8824830573926533388&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ9"
+            target="_blank">Visitar Sitio Web</a>
+        </div>
+
+      </section>
+    </div>
+  </div>
+
+  <footer>
+    <p style="text-align: center; padding: 10px; background-color: #333; color: white; margin-top: 30px;">
+      © 2025 Go Lunch. | Información diseñada para estudiantes.
+    </p>
+  </footer>
+
+  <script>
+    // 🚨🚨 PASO 3: REEMPLAZA ESTAS URLs DE EJEMPLO CON LAS URLs REALES DE GOOGLE MAPS 🚨🚨
+
+    // 1. URL real del iframe para el campus Fidélitas
+    const FIDELITAS_MAPA_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15714.453966567156!2d-84.0416972583818!3d9.93409895045618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3c88e993883%3A0x446e91f11a8c886!2sUniversidad%20Fid%C3%A9litas!5e0!3m2!1ses-419!2scr!4v1704381232014!5m2!1ses-419!2scr";
+
+    // 2. URL real del iframe para el campus UCR (Rodrigo Facio)
+    const UCR_MAPA_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.835105267566!2d-84.0531518!3d9.9388536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3be5b0959f9%3A0xc319114b7e889a74!2sUniversidad%20de%20Costa%20Rica%20(UCR)%20Campus%20Rodrigo%20Facio!5e0!3m2!1ses-419!2scr!4v1704381333857!5m2!1ses-419!2scr";
+
+    // Función para cambiar los resultados
+    function mostrarResultados() {
+      const selector = document.getElementById('select-uni');
+      const seleccion = selector.value;
+      const resultadosFidelitas = document.getElementById('resultados-fidelitas');
+      const resultadosUCR = document.getElementById('resultados-ucr');
+      const mapaIframe = document.getElementById('mapa-iframe');
+      const mapaDescripcion = document.getElementById('mapa-descripcion');
+
+      // 1. Mostrar/Ocultar los resultados de los restaurantes
+      if (seleccion === 'fidelitas') {
+        resultadosFidelitas.style.display = 'block';
+        resultadosUCR.style.display = 'none';
+
+        // 2. Actualizar el mapa
+        mapaIframe.src = FIDELITAS_MAPA_URL;
+        mapaDescripcion.textContent = "El mapa está centrado en la Universidad Fidélitas. Puedes moverte en el mapa para ver los restaurantes cercanos.";
+
+      } else if (seleccion === 'ucr') {
+        resultadosFidelitas.style.display = 'none';
+        resultadosUCR.style.display = 'block';
+
+        // 2. Actualizar el mapa
+        mapaIframe.src = UCR_MAPA_URL;
+        mapaDescripcion.textContent = "El mapa está centrado en la Universidad de Costa Rica (Rodrigo Facio).";
+
+      } else {
+        resultadosFidelitas.style.display = 'none';
+        resultadosUCR.style.display = 'none';
+      }
+    }
+
+    // Inicializar la vista al cargar la página (carga Fidélitas por defecto)
+    document.addEventListener('DOMContentLoaded', mostrarResultados);
+  </script>
+
+</body>
+
+</html>
