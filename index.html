@@ -10,7 +10,6 @@
 
 <body>
 
-  <!-- HEADER CON IMAGEN -->
   <header class="header-img">
     <div class="header-overlay">
       <h1>Go Lunch</h1>
@@ -18,14 +17,12 @@
     </div>
   </header>
 
-  <!-- NAV -->
   <nav class="nav-center">
     <a href="#inicio">Inicio</a>
   </nav>
 
   <div class="container">
 
-    <!-- HERO -->
     <section id="inicio" class="hero">
       <div class="hero-overlay">
         <h2>Comer bien cerca de la universidad</h2>
@@ -36,7 +33,6 @@
       </div>
     </section>
 
-    <!-- BUSCADOR -->
     <section id="buscar">
       <label for="select-uni">Selecciona tu Universidad:</label>
       <select id="select-uni" onchange="mostrarResultados()">
@@ -46,7 +42,6 @@
       <button onclick="mostrarResultados()">Buscar</button>
     </section>
 
-    <!-- MAPA PRINCIPAL -->
 <section id="mapa-cercania">
   <h3>Ubicación del campus</h3>
 
@@ -89,7 +84,6 @@ function mostrarResultados() {
 document.addEventListener("DOMContentLoaded", mostrarResultados);
 </script>
 
-    <!-- RESULTADOS FIDELITAS -->
     <div id="resultados-fidelitas">
 
       <h3>Restaurantes cerca de Universidad Fidélitas</h3>
@@ -120,7 +114,6 @@ document.addEventListener("DOMContentLoaded", mostrarResultados);
 
     </div>
 
-    <!-- RESULTADOS UCR -->
     <div id="resultados-ucr" style="display:none;">
 
       <h3>Restaurantes cerca de la UCR</h3>
@@ -158,15 +151,11 @@ document.addEventListener("DOMContentLoaded", mostrarResultados);
   </footer>
 
  <script>
-    // 🚨🚨 PASO 3: REEMPLAZA ESTAS URLs DE EJEMPLO CON LAS URLs REALES DE GOOGLE MAPS 🚨🚨
-
-    // 1. URL real del iframe para el campus Fidélitas
+  
     const FIDELITAS_MAPA_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15714.453966567156!2d-84.0416972583818!3d9.93409895045618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3c88e993883%3A0x446e91f11a8c886!2sUniversidad%20Fid%C3%A9litas!5e0!3m2!1ses-419!2scr!4v1704381232014!5m2!1ses-419!2scr";
 
-    // 2. URL real del iframe para el campus UCR (Rodrigo Facio)
     const UCR_MAPA_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.835105267566!2d-84.0531518!3d9.9388536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3be5b0959f9%3A0xc319114b7e889a74!2sUniversidad%20de%20Costa%20Rica%20(UCR)%20Campus%20Rodrigo%20Facio!5e0!3m2!1ses-419!2scr!4v1704381333857!5m2!1ses-419!2scr";
 
-    // Función para cambiar los resultados
     function mostrarResultados() {
       const selector = document.getElementById('select-uni');
       const seleccion = selector.value;
@@ -175,12 +164,10 @@ document.addEventListener("DOMContentLoaded", mostrarResultados);
       const mapaIframe = document.getElementById('mapa-iframe');
       const mapaDescripcion = document.getElementById('mapa-descripcion');
 
-      // 1. Mostrar/Ocultar los resultados de los restaurantes
       if (seleccion === 'fidelitas') {
         resultadosFidelitas.style.display = 'block';
         resultadosUCR.style.display = 'none';
 
-        // 2. Actualizar el mapa
         mapaIframe.src = FIDELITAS_MAPA_URL;
         mapaDescripcion.textContent = "El mapa está centrado en la Universidad Fidélitas. Puedes moverte en el mapa para ver los restaurantes cercanos.";
 
@@ -188,7 +175,6 @@ document.addEventListener("DOMContentLoaded", mostrarResultados);
         resultadosFidelitas.style.display = 'none';
         resultadosUCR.style.display = 'block';
 
-        // 2. Actualizar el mapa
         mapaIframe.src = UCR_MAPA_URL;
         mapaDescripcion.textContent = "El mapa está centrado en la Universidad de Costa Rica (Rodrigo Facio).";
 
@@ -198,7 +184,6 @@ document.addEventListener("DOMContentLoaded", mostrarResultados);
       }
     }
 
-    // Inicializar la vista al cargar la página (carga Fidélitas por defecto)
     document.addEventListener('DOMContentLoaded', mostrarResultados);
   </script>
 
